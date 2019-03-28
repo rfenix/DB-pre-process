@@ -1,0 +1,22 @@
+function deleteRows() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var s = ss.getSheetByName('processado');
+  var r = s.getRange('F8:J968');
+  var v = r.getValues();
+  for(var i=v.length-1;i>=0;i--) {
+    if(v[i][0]=='?' || v[i][1]=='?' || v[i][2]=='?' || v[i][3]=='?' || v[i][4]=='?') 
+      s.deleteRow(i+8);
+}
+
+function deleteBirads() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var s = ss.getSheetByName('processado');
+  var r = s.getRange('D8:D858');
+  var v = r.getValues();
+  
+  for(var i=v.length-1;i>=0;i--) {
+    if (v[i][0]>5 || v[i][0]<1) {
+      s.deleteRow(i+29);
+    }
+  }
+}
